@@ -30,14 +30,3 @@ graph LR
         USERID[user_id] -->|has_post| POST
     end
 ```
-
-## Query Pattern
-
-Uses CogDB's chained `out().tag().inc()` pattern to retrieve all properties in a single traversal:
-
-```python
-posts_graph.v().has("_type", "post").tag("post_id") \
-    .out('title').tag('title').inc('title') \
-    .out('content').tag('content').inc('content') \
-    .out('author_name').tag('author_name').all()
-```
